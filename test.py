@@ -1,5 +1,3 @@
-true, false = True, False
-
 from magic import Magic
 
 from components import (
@@ -7,7 +5,8 @@ from components import (
     ordered_items,
     unordered_items,
     image_text,
-    push_button
+    push_button,
+    grid_item
 )
 
 app = Magic(__name__, modules=['math', 'random'], log=True)
@@ -16,7 +15,8 @@ components = {'Navbar': navbar,
               'OlList': ordered_items,
               'UlList': unordered_items,
               'ImgText': image_text,
-              'PushButton': push_button}
+              'PushButton': push_button,
+              'GridItem': grid_item}
 
 app.add_component(components)
 
@@ -32,7 +32,7 @@ def home(**kwargs):
 
 @app.route('/test')
 def test(**kwargs):
-    return app.render_template('index.html', minify=false, environ=kwargs)
+    return app.render_template('test.mhtml', minify=False, environ=kwargs)
 
 
 @app.route('404')

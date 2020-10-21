@@ -93,3 +93,13 @@ body {
     transform: translate(-50%, -50%);
 }
 
+.grid-area {
+    display: grid;
+    /*grid-template-rows: repeat(3, auto);*/
+    grid-template-columns: repeat(3, auto);
+    -ms-grid-column-align: center;
+}
+
+.grid-item {
+    padding: 5px;
+}
