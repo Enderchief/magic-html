@@ -1,0 +1,15 @@
+<html lang="en">
+
+    <head>
+        <title>{{PATH_INFO}}</title>
+        <link rel="stylesheet" href="/static/style.css"/>
+    </head>
+
+    <body>
+
+        {{<Navbar attr="{'site':'Site Name', 'paths':['Home', 'Page', 'About', 'Extra']}"/>}}
+        <br/><br/><br/><br/>
+        <h1>Error 404: Page "{{PATH_INFO}}" not found</h1>
+    </body>
+
+</html>

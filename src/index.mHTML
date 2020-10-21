@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Test site</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&amp;display=swap" rel="stylesheet"/>
+
+        <link rel="stylesheet" href="/static/style.css"/>
+
+    </head>
+
+    <body>
+
+        {{<Navbar attr="{'site':'Site Name', 'paths':['Home', 'Page', 'About', 'Extra']}"/>}}
+
+        <div class="main">
+
+            <h1>Hello world</h1>
+
+            <div class="content">
+
+                {{<UlList/>}}
+
+                {{<OlList attr="{'items':['oranges', 'apples', 'bananas'], 'compare':'fruits'}"/>}}
+
+
+                {{<OlList attr="{'items':globals['rand_num'], 'compare':'winning numbers for today'}"/>}}
+
+                <br/>
+
+                {{<ImgText attr="{'text':'Hello this is text', 'content':'This is some filler content from this image'}"/>}}
+
+                {{<PushButton attr="{'onPress':'test'}"/>}}
+
+
+                <ul>{{ ''.join([f"\t\t\t\t\n<li>{i+1}</li>\n" for i in range(10)]) }}</ul>
+
+
+
+
+
+
+
+            </div>
+
+
+        </div>
+
+
+        <script>{{ method.let("x")|n| document.class_name("content")}}
+            const test = () => {console.log("hello world")}
+        </script>
+
+    </body>
+
+</html>
