@@ -9,7 +9,7 @@ from components import (
     grid_item
 )
 
-app = Magic(__name__, modules=['math', 'random'], log=True)
+app = Magic(__name__, modules=['math', 'random'], log=False)
 
 components = {'Navbar': navbar,
               'OlList': ordered_items,

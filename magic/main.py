@@ -5,7 +5,6 @@ import gunicorn
 from .window import Document, Method
 import re
 import importlib
-from builtins import str
 
 
 document = Document
@@ -26,6 +25,7 @@ class Magic:
         self._route = {}
         self.e404 = ''
         self.globals = {}
+        self._log = log
 
         self.modules = [importlib.__import__(i) for i in modules] if modules else []
 
@@ -112,7 +112,6 @@ class Magic:
         print('DEF GLOBAL', kwargs)
         for k in kwargs:
             self.globals[k] = kwargs[k]
-        return ''
 
     def component(self, name: str):
         def get_func(func: Callable) -> Callable:
