@@ -11,3 +11,13 @@ def app(environ, start_response):
     )
 
     return iter([data])
+
+import os
+import subprocess
+
+with open('components/image_text.py') as f:
+    file = f.read()
+
+print(file)
+x = subprocess.check_output(['pj', '-s', file])
+print(x)

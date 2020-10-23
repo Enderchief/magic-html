@@ -5,12 +5,11 @@
         <title>Test site</title>
 
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&amp;display=swap" rel="stylesheet"/>
-
         <link rel="stylesheet" href="/static/style.css"/>
 
     </head>
 
-    <body>
+    <body onload="brython()">
 
         {{<Navbar attr="{'site':'Site Name', 'paths':['Home', 'Page', 'About', 'Extra']}"/>}}
 
@@ -36,21 +35,11 @@
 
                 <ul>{{ ''.join([f"\t\t\t\t\n<li>{i+1}</li>\n" for i in range(10)]) }}</ul>
 
-
-
-
-
-
-
             </div>
 
 
         </div>
 
-
-        <script>{{ method.let("x")|n| document.class_name("content")}}
-            const test = () => {console.log("hello world")}
-        </script>
 
     </body>
 

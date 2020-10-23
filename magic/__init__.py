@@ -1,2 +1,2 @@
 from .main import Magic
-from .window import Document, Method
+from magic.js.window import Document, Method

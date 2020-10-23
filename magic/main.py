@@ -1,14 +1,7 @@
 from typing import Callable, Iterable
 
-import gunicorn
-
-from .window import Document, Method
 import re
 import importlib
-
-
-document = Document
-method = Method
 
 
 class Magic:
