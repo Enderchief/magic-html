@@ -1,7 +1,4 @@
-
 def component(**kwargs):
-    print(__name__, kwargs)
-
     if len(kwargs):
         items = list(f'<li>{i}</li>\n' for i in kwargs["items"])
 
@@ -14,4 +11,4 @@ def component(**kwargs):
             '\t\t\t\t' +
             ('\t\t\t\t'.join(items)) +
             '\t\t\t</ol>\n'
-            '\t\t</div>')
+            '\t\t</div>'), __name__

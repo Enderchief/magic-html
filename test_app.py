@@ -12,12 +12,23 @@ def app(environ, start_response):
 
     return iter([data])
 
+
 import os
 import subprocess
 
-with open('components/image_text.py') as f:
+path = './components/image_text.py'
+
+with open(path) as f:
     file = f.read()
 
 print(file)
-x = subprocess.check_output(['pj', '-s', file])
+x = subprocess.check_output(['pj', '-s', file]).decode('utf-8')
 print(x)
+
+spl = path.split('/')
+
+
+spl = '/'.join(spl[0:-2])
+
+with open(f'{spl}/test.js', 'w') as f:
+    f.write(x)

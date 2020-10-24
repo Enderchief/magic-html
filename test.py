@@ -35,6 +35,11 @@ def test(**kwargs):
     return app.render_template('test.mhtml', minify=False, environ=kwargs)
 
 
+@app.route('/python')
+def python(**kwargs):
+    return app.render_template('index.html', minify=False, environ=kwargs)
+
+
 @app.route('404')
 def error(**kwargs):
     print(kwargs)
@@ -50,5 +55,5 @@ def style(**kwargs):
 app.globals['test'] = 'hello world'
 
 
-def create_app(*args):
-    return app.run(*args)
+def create_app(*args, **kwargs):
+    return app.run(app, *args, **kwargs)

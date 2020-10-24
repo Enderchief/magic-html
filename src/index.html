@@ -2,67 +2,22 @@
 <html lang="en">
 
 <head>
-    <title>Test site</title>
-
     <script src="https://cdn.jsdelivr.net/npm/brython@3.9.0/brython.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/brython@3.9.0/brython_stdlib.js"></script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&amp;display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="static/style.css"/>
-
 </head>
 
-<body>
+<body onload="brython()">
+<script type="text/python">
+from browser import document
+from browser.widgets.dialog import InfoDialog
 
-<div class="navbar" aria-label="navigation bar">
-    <ul class="nav">
-        <li class="nav-item nav-main"><strong>Site Name</strong></li>
-        <div></div>
+def click(ev):
+    InfoDialog("Hello", f"Hello, {document['zone'].value} !")
 
-        <a href="#"><li class="nav-item">Home</li></a>
-        <a href="#"><li class="nav-item">Page</li></a>
-        <a href="#"><li class="nav-item">About</li></a>
-        <a href="#"><li class="nav-item">Extra</li></a>
-    </ul>
-</div>
-
-
-<h1>Hello world</h1>
-
-<div class="main">
-    <div class="content">
-        <div class="ulList">
-            <h3>This an unordered list</h3>
-            <ul>
-                <li>red</li>
-                <li>green</li>
-                <li>blue</li>
-            </ul>
-        </div>
-        <div class="olList">
-            <h3>Top 5 numbers</h3>
-            <ol>
-                <li>this</li>
-                <li>is</li>
-                <li>a</li>
-                <li>test</li>
-                <li>hello</li>
-            </ol>
-        </div>
-        <br/>
-        <div class="imgText">
-            <img src="https://via.placeholder.com/3999x3999.png?text=Placeholder+text"/>
-            <div>Hello this is text yay</div>
-        </div>
-     <br/>
-    </div>
-</div>
-
-    <script type="text/python">
-        from browser import document
-        document <= "Hello World"
-    </script>
-
+# bind event 'click' on button to function echo
+document["echo"].bind("click", click)
+</script>
+<input id="zone">
+<button id="mybutton">click !</button>
 </body>
-
 </html>

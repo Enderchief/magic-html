@@ -1,7 +1,8 @@
-from typing import Callable, Iterable
-
+from typing import Callable
 import re
 import importlib
+
+from .utils.server import run
 
 
 class Magic:
@@ -11,6 +12,7 @@ class Magic:
     :param modules:
     :param log:
     """
+
     def __init__(self, name: str, path: str = '/src', modules: list = None, log: bool = False):
         self.name = name
         self.path = path
@@ -19,6 +21,8 @@ class Magic:
         self.e404 = ''
         self.globals = {}
         self._log = log
+
+        self.run = run
 
         self.modules = [importlib.__import__(i) for i in modules] if modules else []
 
@@ -60,7 +64,10 @@ class Magic:
                         kwargs = eval(
                             new[5:-1].replace('<', '').replace('>', '').replace('/', '').replace("'", '"').strip('"'))
 
-                        html_str = html_str.replace(item.group(), self._components[key](**kwargs))
+                        component, c_name = self._components[key]
+                        if self._log:
+                            print(c_name)
+                        html_str = html_str.replace(item.group(), component(**kwargs))
                     else:
                         found = False
 
@@ -126,27 +133,3 @@ class Magic:
                 self._route[route] = [func, args, kwargs]
 
         return append_path
-
-    def run(self, environ: dict, start_response) -> Iterable:
-        path = environ.get('PATH_INFO')
-
-        data = self._route.get(path, self.e404)
-
-        if str(path).endswith('css'):
-            data = data[0](**environ).encode('utf-8')
-            start_response(
-                '200 OK', [
-                    ('Content-Type', 'text/css'),
-                    ('Content-Length', str(len(data)))
-                ]
-            )
-        else:
-            data = data[0](**environ).encode('utf-8')
-            start_response(
-                '200 OK', [
-                    ('Content-Type', 'text/html'),
-                    ('Content-Length', str(len(data)))
-                ]
-            )
-
-        return iter([data])

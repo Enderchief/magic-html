@@ -1,6 +1,5 @@
 
 def component(**kwargs):
-    print(__name__, kwargs)
 
     site = kwargs.get('site')
     paths = kwargs.get('paths')
@@ -19,4 +18,4 @@ def component(**kwargs):
             </ul>
         </div>
         '''
-    )
+    ), __name__

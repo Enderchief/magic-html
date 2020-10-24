@@ -10,4 +10,4 @@ def component(**kwargs):
             {{<ImgText attr="{'text':'Hello this is text', 'content':'A grid webpage', 'size':'256'}"/>}}
         </div>
         '''
-    ).replace('CLASSNAME', cls)
+    ).replace('CLASSNAME', cls), __name__

@@ -1,7 +1,5 @@
 
 def component(**kwargs):
-    print(__name__, kwargs)
-
     on_press = kwargs.get('onPress') if kwargs.get('onPress') else ''
 
     return (
@@ -11,4 +9,4 @@ def component(**kwargs):
             <button onclick={on_press}()>Press me!</button>
         </div>
         '''
-    )
+    ), __name__
